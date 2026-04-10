@@ -1,87 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Our Story 💖</title>
 
 <style>
 body{
-margin:0;
-background:black;
-color:white;
-font-family:sans-serif;
-overflow:hidden;
+    margin:0;
+    background:linear-gradient(120deg,#ffe6f4,#fff0e6,#efe6ff);
+    background-size:400% 400%;
+    animation:bgMove 15s infinite ease;
+    font-family:'Quicksand',sans-serif;
+    padding:20px;
 }
 
-.story{
-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-flex-direction:column;
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
-img{
-width:90%;
-max-height:60%;
-border-radius:20px;
+.story-box{
+    max-width:650px;
+    margin:auto;
+    padding-top:20px;
 }
 
-.text{
-margin-top:20px;
-font-size:18px;
-text-align:center;
+.bubble{
+    background:white;
+    padding:15px;
+    font-size:1.2rem;
+    margin:15px 0;
+    border-radius:20px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    animation:fadeIn 0.8s forwards;
+    opacity:0;
 }
 
-.progress{
-position:absolute;
-top:0;
-left:0;
-height:5px;
-background:#ff4da6;
-animation:progress 5s linear forwards;
+@keyframes fadeIn{
+    to{opacity:1;}
 }
 
-@keyframes progress{
-from{width:0}
-to{width:100%}
+button{
+    display:block;
+    margin:30px auto;
+    padding:14px 24px;
+    border:none;
+    background:#ff66aa;
+    color:white;
+    border-radius:30px;
+    font-size:1rem;
 }
 </style>
 </head>
 
 <body>
 
-<div class="progress"></div>
+<div class="story-box">
+    <div class="bubble">Yay! You reached our little story page 💞</div>
+    <div class="bubble">Fundu, you bring softness and joy everywhere ✨</div>
+    <div class="bubble">Your presence feels like warm sunshine 🌸</div>
+    <div class="bubble">Thank you for being so special ❤️</div>
+    <div class="bubble">This whole thing was made just for you 💗</div>
 
-<div class="story">
-<img id="photo" src="img1.jpg">
-<div class="text" id="text"></div>
+    index.htmlBack to Messages 💚</button>
 </div>
-
-<script>
-
-const slides = [
-{img:"img1.jpg", text:"Our first memory 💖"},
-{img:"img2.jpg", text:"Your smile = my happiness 😊"},
-{img:"img3.jpg", text:"Fundu forever ❤️"}
-];
-
-let i=0;
-
-function nextSlide(){
-    i++;
-    if(i>=slides.length){
-        window.location.href="special.html";
-        return;
-    }
-
-    document.getElementById("photo").src=slides[i].img;
-    document.getElementById("text").innerText=slides[i].text;
-}
-
-setInterval(nextSlide,5000);
-
-</script>
 
 </body>
 </html>
