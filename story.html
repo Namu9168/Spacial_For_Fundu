@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story 💖</title>
+
+<style>
+body{
+margin:0;
+background:black;
+color:white;
+font-family:sans-serif;
+overflow:hidden;
+}
+
+.story{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+}
+
+img{
+width:90%;
+max-height:60%;
+border-radius:20px;
+}
+
+.text{
+margin-top:20px;
+font-size:18px;
+text-align:center;
+}
+
+.progress{
+position:absolute;
+top:0;
+left:0;
+height:5px;
+background:#ff4da6;
+animation:progress 5s linear forwards;
+}
+
+@keyframes progress{
+from{width:0}
+to{width:100%}
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress"></div>
+
+<div class="story">
+<img id="photo" src="img1.jpg">
+<div class="text" id="text"></div>
+</div>
+
+<script>
+
+const slides = [
+{img:"img1.jpg", text:"Our first memory 💖"},
+{img:"img2.jpg", text:"Your smile = my happiness 😊"},
+{img:"img3.jpg", text:"Fundu forever ❤️"}
+];
+
+let i=0;
+
+function nextSlide(){
+    i++;
+    if(i>=slides.length){
+        window.location.href="special.html";
+        return;
+    }
+
+    document.getElementById("photo").src=slides[i].img;
+    document.getElementById("text").innerText=slides[i].text;
+}
+
+setInterval(nextSlide,5000);
+
+</script>
+
+</body>
+</html>

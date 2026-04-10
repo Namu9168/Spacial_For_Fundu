@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Only For You 💖</title>
+
+<style>
+body{
+background:black;
+color:#ff4da6;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+font-family:sans-serif;
+flex-direction:column;
+}
+
+h1{
+animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+50%{transform:scale(1.1)}
+}
+
+button{
+padding:12px 25px;
+border:none;
+background:#ff4da6;
+color:white;
+border-radius:25px;
+margin-top:20px;
+cursor:pointer;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+
+<h1>You Found My Secret 💖</h1>
+
+<p id="text"></p>
+
+<button onclick="play()">Play My Heart 🎧</button>
+
+<audio id="audio" src="music2.mp3"></audio>
+
+<script>
+
+const message = "Fundu… 💖\n\nI may not say this often,\nBut you really mean a lot to me.\n\nYou are not just my best friend…\nYou are my comfort, my happiness, my safe place ✨";
+
+let i=0;
+
+function type(){
+    if(i < message.length){
+        document.getElementById("text").innerHTML += message.charAt(i);
+        i++;
+        setTimeout(type,50);
+    }
+}
+
+type();
+
+function play(){
+    document.getElementById("audio").play();
+}
+
+</script>
+
+</body>
+</html>
