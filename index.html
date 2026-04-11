@@ -140,8 +140,8 @@ body{
 
 <div id="pinkOverlay"></div>
 
-<!-- AUDIO -->
-<audio id="music" loop>
+<!-- ✅ AUDIO -->
+<audio id="music" autoplay muted loop>
     <source src="music1.mpeg" type="audio/mpeg">
 </audio>
 
@@ -163,28 +163,27 @@ body{
 
 <script>
 
-/* ✅ AUTOPLAY MUSIC FIX */
-window.onload = () => {
-    const music = document.getElementById("music");
-    music.volume = 0;
-    music.play().catch(()=>{});
-    setTimeout(() => {
-        gsap.to(music, { volume: 1, duration: 3 });
-    }, 600);
-};
+/* ✅ REAL AUTOPLAY FIX FOR GITHUB PAGES */
 const music = document.getElementById("music");
 
-function startMusic() {
-    music.play().then(() => {
-        console.log("Music started");
-    }).catch(err => {
-        console.log("Error:", err);
-    });
-}
+window.addEventListener("load", () => {
 
-/* ANY user interaction */
-document.body.addEventListener("click", startMusic, { once: true });
-document.body.addEventListener("touchstart", startMusic, { once: true });
+    music.volume = 0;  // start muted
+
+    // try to play immediately (GitHub requires muted start)
+    music.play().then(() => {
+        console.log("Music autoplay success");
+    }).catch(err => {
+        console.log("Autoplay blocked:", err);
+    });
+
+    // unmute after slight delay
+    setTimeout(() => {
+        music.muted = false;
+        gsap.to(music, { volume: 1, duration: 3 });
+    }, 800);
+});
+
 /* Sparkles */
 setInterval(() => {
     let s = document.createElement("div");
